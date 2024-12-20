@@ -24,7 +24,7 @@ func GetVehicleById(c *gin.Context) {
 			return
 		}
 	}
-	c.JSON(http.StatusNotFound, gin.H{"message": "Vehicle not found"})
+	c.JSON(http.StatusNotFound, gin.H{"error": "Not Found", "message": "Vehicle with ID = " + strconv.Itoa(id) + " not found"})
 }
 
 func CreateVehicle(c *gin.Context) {
