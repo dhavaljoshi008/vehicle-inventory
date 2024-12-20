@@ -9,6 +9,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/vehicles", vehicle.GetAllVehicles)
 	router.GET("/vehicles/:id", vehicle.GetVehicleById)
+	router.POST("/vehicles", vehicle.CreateVehicle)
 	if err := router.SetTrustedProxies([]string{"127.0.0.1"}); err != nil {
 		panic(err)
 	}

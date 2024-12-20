@@ -26,3 +26,16 @@ func GetVehicleById(c *gin.Context) {
 	}
 	c.JSON(http.StatusNotFound, gin.H{"message": "Vehicle not found"})
 }
+
+func CreateVehicle(c *gin.Context) {
+	var vehicle Vehicle
+	if err := c.BindJSON(&vehicle); err != nil {
+		fmt.Println("CreateVehicle() Error: ", err.Error())
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request", "message": "The request body is invalid. Please ensure all required fields are provided and correctly formatted."})
+		return
+	}
+	lastVehicleId := Vehicles[len(Vehicles)-1].ID
+	vehicle.ID = lastVehicleId + 1
+	Vehicles = append(Vehicles, vehicle)
+	c.JSON(http.StatusCreated, vehicle)
+}
