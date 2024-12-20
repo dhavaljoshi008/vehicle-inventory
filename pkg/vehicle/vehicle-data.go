@@ -1,8 +1,6 @@
-package database
+package vehicle
 
-import "github.com/dhavaljoshi008/vehicle-inventory/pkg/vehicle"
-
-var Vehicles = []vehicle.Vehicle{
+var Vehicles = []Vehicle{
 	{1, "BMW", "M2", 2021},
 	{2, "Honda", "Civic", 2021},
 	{3, "Ford", "Focus", 2019},
