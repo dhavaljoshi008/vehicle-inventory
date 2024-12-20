@@ -8,6 +8,7 @@ import (
 func main() {
 	router := gin.Default()
 	router.GET("/vehicles", vehicle.GetAllVehicles)
+	router.GET("/vehicles/:id", vehicle.GetVehicleById)
 	err := router.SetTrustedProxies([]string{"127.0.0.1"})
 	if err != nil {
 		panic(err)
