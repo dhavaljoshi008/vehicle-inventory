@@ -131,3 +131,20 @@ func UpdateVehicle(c *gin.Context) {
 		}
 	}
 }
+
+func DeleteVehicle(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		fmt.Println("DeleteVehicle() Error: ", err.Error())
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request", "message": "Please provide a valid Vehicle ID"})
+	}
+
+	for i := 0; i < len(Vehicles); i++ {
+		if Vehicles[i].ID == id {
+			fmt.Println("DeleteVehicle() Deleting Vehicle: ", Vehicles[i])
+			Vehicles = append(Vehicles[:i], Vehicles[i+1:]...)
+			c.JSON(http.StatusNoContent, nil)
+			return
+		}
+	}
+}

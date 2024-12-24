@@ -12,6 +12,7 @@ func main() {
 	router.POST("/vehicles", vehicle.CreateVehicle)
 	router.PUT("/vehicles/:id", vehicle.ReplaceVehicle)
 	router.PATCH("/vehicles/:id", vehicle.UpdateVehicle)
+	router.DELETE("/vehicles/:id", vehicle.DeleteVehicle)
 
 	if err := router.SetTrustedProxies([]string{"127.0.0.1"}); err != nil {
 		panic(err)
