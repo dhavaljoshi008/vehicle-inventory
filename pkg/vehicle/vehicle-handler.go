@@ -146,5 +146,6 @@ func DeleteVehicle(c *gin.Context) {
 			c.JSON(http.StatusNoContent, nil)
 			return
 		}
+		c.JSON(http.StatusNoContent, nil)
 	}
 }
